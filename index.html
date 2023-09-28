@@ -11,6 +11,7 @@
     <main>
         <body>
             <header>
+                <img id="Logo" src="./Images/Logo.png" aria-placeholder="Logo">
                 <h1>Scroll Cinema</h1>
             </header>
 
@@ -22,16 +23,22 @@
                 </div>
                 <div id="searchContainer">
                     <!-- Add JavaScript Functionality -->
-                    <textarea id="searchInput">Search Area</textarea>
-                    <!-- Genre filter -->
-                    <select ID="genre-input">
-                        <option value="" disabled selected>Select a Genre Rating...</option>
-                        <option value="5 star">5 Stars</option>
-                        <option value="4 star">4 Stars</option>
-                        <option value="3 star">3 Stars</option>
-                        <option value="2 star">2 Stars</option>
-                        <option value="1 star">1 Star</option>
-                    </select>
+                    <input id="searchInput" value="Search"></input>
+                    <!-- Rating filter -->
+                    <div id="searchBySection" class="card">
+                        <h3>Search By...</h3>
+                        <div id="language-buttons" class="card-body">
+                          <label for="compareByGenre">Compare by Genre:</label>
+                          <input type="checkbox" id="compareByGenre" name="compareByGenre">
+                          <label for="movieRating">Select a Rating:</label>
+                          <select id="movieRating" name="movieRating">
+                              <option value="" disabled selected>Select a Rating</option>
+                              <option value="topRated">Must-Watch Masterpieces</option>
+                              <option value="notBad">Midweek Movies</option>
+                              <option value="bad">Meagerly Rated Trash</option>
+                          </select>
+                        </div>
+                      </div>
                     <!-- This button should replace the index.html with results.html -->
                     <button id="searchButton">Search Button</button>
                 </div>
