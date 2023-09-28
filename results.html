@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./Assets/CSS/style.css"/>
+        <link rel="stylesheet" href="./Assets/CSS/reset.css">
         <script src="https://cdn.tailwindcss.com"></script>
         <title>Scroll Cinema</title>
     </head>
 
     <body>
         <header id="hero">
+            <img id="Logo" src="./Images/Logo.png" aria-placeholder="Logo">
             <h1 id="app-title"> ScrollCinema </h1>
             <p>Search for a movie title to see a list of similar films and their ratings!
             </p>
@@ -35,6 +37,7 @@
             
                 <label for="movieRating">Select a Rating:</label>
                 <select id="movieRating" name="movieRating">
+                    <option value="" disabled selected>Select a Rating</option>
                     <option value="topRated">Must-Watch Masterpieces</option>
                     <option value="notBad">Midweek Movies</option>
                     <option value="bad">Meagerly Rated Trash</option>
