@@ -8,17 +8,44 @@
         <title>Scroll Cinema</title>
     </head>
 
+    <body>
+        <header id="hero">
+            <h1 id="app-title"> ScrollCinema </h1>
+            <p>Search for a movie title to see a list of similar films and their ratings!
+            </p>
+        </header>
+  
+  
     <main>
-        <body>
-            <header>
-                <h1>Scroll Cinema</h1>
-            </header>
-
-            <section>
-                <div>
-
-                </div>
-            </section>
-        </body>
+      <section id="searchContainer">
+  
+        <div id="searchSection" class="card">
+          <h3>Search by Movie</h3>
+          <form id="search-form">
+            <label class="form-label" for="movieTitle">Movie Title</label>
+            <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input" />
+            <button type="submit" class="btn">Stop the doom scroll!</button>
+          </form>
+        </div>
+  
+        <div id="searchBySection" class="card">
+          <h3>Search By...</h3>
+          <div id="language-buttons" class="card-body">
+            <!-- this needs to be adjusted so that it is a checkbox and a drop down menu -->
+            <button data-language="" class="btn">JavaScript</button>
+            <button data-language="html" class="btn">HTML</button>
+            <button data-language="css" class="btn">CSS</button>
+          </div>
+        </div>
+      </section>
+  
+      <div id="resultsSection">
+        <h2>Showing suggested movies for: <span id="repo-search-term"></span></h2>
+        <div id="repos-container" ></div>
+      </div>
     </main>
-</html>
+  
+    <script src="./Assets/JS/script.js"></script>
+  </body>
+  
+  </html>
