@@ -3,55 +3,84 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./Assets/CSS/style.css"/>
-        <link rel="stylesheet" href="./Assets/CSS/reset.css">
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Scroll Cinema</title>
+        <link rel="stylesheet" href="./Assets/CSS/reset.css">
+        <link rel="stylesheet" href="./Assets/CSS/style.css"/>
+        <title>ScrollCinema</title>
     </head>
 
-    <body>
-        <header id="hero">
-            <img id="Logo" src="./Images/Logo.png" aria-placeholder="Logo">
-            <h1 id="app-title"> ScrollCinema </h1>
-            <p>Search for a movie title to see a list of similar films and their ratings!
-            </p>
-        </header>
-  
-        <main>
-            <section id="searchContainer">
-  
-            <div id="searchSection" class="card">
-                <h3>Search by Movie</h3>
-            <form id="search-form">
-                <label class="form-label" for="movieTitle">Movie Title</label>
-                <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input" />
-                <button type="submit" class="btn">Stop the doom scroll!</button>
-            </form>
-            </div>
-  
-            <div id="searchBySection" class="card">
-                <h3>Search By...</h3>
-            <div id="language-buttons" class="card-body">
-                <label for="compareByGenre">Compare by Genre:</label>
-                <input type="checkbox" id="compareByGenre" name="compareByGenre">
+    <body class="columns-2 flex flex-col mx-4">
+
+        <div class="flex flex-wrap">
             
-                <label for="movieRating">Select a Rating:</label>
-                <select id="movieRating" name="movieRating">
-                    <option value="" disabled selected>Select a Rating</option>
-                    <option value="topRated">Must-Watch Masterpieces</option>
-                    <option value="notBad">Midweek Movies</option>
-                    <option value="bad">Meagerly Rated Trash</option>
-                </select>
-            </div>
-            </div>
+            <main class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-100">
+                <!-- Nested header under main to separate it from the resultsSection -->
+                <header class="flex justify-start text-center grid grid-auto-flow: row" id="hero">
+                    <img id="Logo" src="./Images/Logo.png" aria-placeholder="Logo">
+                    <h1 id="app-title"> Welcome to ScrollCinema! </h1>
+                    <p>Search for a movie title to see a list of similar films and their ratings!
+                    </p>
+                </header>
+
+                <section class="w-full flex justify-center align-center grid grid-auto-flow: row" id="searchContainer">
+                    <div class="text-center grid grid-auto-flow: row" id="searchSection" class="card">
+                        <!-- <h3 class="text-center">Search by Movie</h3> -->
+                    <form id="search-form" class="flex flex-col text-center px-2 max-w-full">
+                        <label class="form-label" for="movieTitle">Search By Movie Title: </label>
+                        <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input" />
+                        <button type="submit" class="btn max-w-1/3 mx-12" id="searchBtn"> Stop the Doom Scroll! </button>
+                    </form>
+                    </div>
+        
+                    <div id="searchBySection" class="card text-left grid grid-auto-flow: row py-4 px-2">
+                        <!-- <h3>Search By...</h3> -->
+
+                        <!-- Split comparebyGenre and movieRating into individual elements for a more refined page layout -->
+                        <!-- Gave them unique id's for CSS purposes -->
+                        <div id="genreContainer" class="card-body">
+                            <label for="compareByGenre" id="genreLabel">Compare by Genre: </label>
+                            <input type="checkbox" id="compareByGenre" name="compareByGenre" class="w-4 h-4">
+                        </div>
+                        <!-- New ratingContainer div -->
+                        <div id="ratingContainer" class="card-body">     
+                            <label for="movieRating">Select a Rating:</label>
+                            <select id="movieRating" name="movieRating">
+                                <option value="" disabled selected>Select a Rating</option>
+                                <option value="topRated">Must-Watch Masterpieces</option>
+                                <option value="notBad">Midweek Movies</option>
+                                <option value="bad">Meagerly Rated Trash</option>
+                            </select>
+                        </div>
+                    </div>
+                     <!-- Need to add the search confirmation HTML here -->
+                     <section id="confirmationContainer" class="text-left grid grid-auto-flow: row py-4 px-16">
+                        <div>
+                            <!-- Placeholder -->
+                            CONFIRMATION PLACEHOLDER
+                        </div>
+                        <div>
+                            <!-- Placeholder -->
+                            RATINGS PLACEHOLDER
+                        </div>
+                     </section>
+                   
+                </section>
+                
+            </main>
+
+            <!-- Moved out of main section so that it can be displayed in the correct position -->
+            <section id="resultsSection" class="w-full md:w-1/2 md:w-full lg:w-2/3 bg-blue-100 ml-0 flex flex-wrap grid grid-auto-flow items-center">
+                <div class="py-8 my-2 mr-4 text-2xl font-bold item-center"> <!-- Added div for heading container -->
+                    <h2 class="text-center">Showing suggested movies for: <span id="repo-search-term">PLACEHOLDER</span></h2>
+                </div>
+                <!-- These are PLACEHOLDERS for styling purposes -->
+                <!-- These will be removed and replaced by dynamically updating HTML via JS -->
+                <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
+                <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
+                <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
+                <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
             </section>
-  
-            <section id="resultsSection">
-                <h2>Showing suggested movies for: <span id="repo-search-term"></span></h2>
-                <div id="repos-container" ></div>
-            </section>
-        </main>
-  
+        </div>
     <script src="./Assets/JS/script.js"></script>
     </body>
   

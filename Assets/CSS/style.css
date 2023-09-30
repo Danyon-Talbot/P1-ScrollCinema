@@ -6,3 +6,46 @@
     --salmon: #ff917E;
 }
 
+main {
+    height: 100%;
+}
+
+#hero {
+    max-width: 500px;
+    padding: 10px;
+}
+
+#logo {
+    border-radius: 25%;
+}
+
+#searchContainer {
+    max-width: 500px;
+    padding: 10px;
+}
+
+
+#search-form {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    background-color: rgb(201, 201, 201);
+    border-style: solid;
+    border-color: var(--black);
+}
+
+#searchBtn {
+    margin-top: 5px;
+    background-color: rgb(92, 92, 92);
+    padding: 5px;
+    border-radius: 25px;
+}
+
+#searchBySection {
+    background-color: rgb(201, 201, 201);
+}
+
+#confirmationContainer {
+    background-color: rgb(201, 201, 201);
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
