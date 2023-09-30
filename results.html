@@ -9,12 +9,16 @@
         <title>ScrollCinema</title>
     </head>
 
+    <!-- Creates 2 columns and sets the flex direction to column. mx-4 adds 16px margin left & right. -->
     <body class="columns-2 flex flex-col mx-4">
 
-        <div class="flex flex-wrap">
+        <!-- Makes main content wrap -->
+        <main class="flex flex-wrap">
             
-            <main class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-100">
-                <!-- Nested header under main to separate it from the resultsSection -->
+            <!-- This div separates all the search and confirmation code from the resultsSection -->
+            <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-100">
+
+                <!-- Aligns text to center and forces each element into it's own row -->
                 <header class="flex justify-start text-center grid grid-auto-flow: row" id="hero">
                     <img id="Logo" src="./Images/Logo.png" aria-placeholder="Logo">
                     <h1 id="app-title"> Welcome to ScrollCinema! </h1>
@@ -22,6 +26,7 @@
                     </p>
                 </header>
 
+                <!-- Aligns all elements within to the center and forces them on individual rows -->
                 <section class="w-full flex justify-center align-center grid grid-auto-flow: row" id="searchContainer">
                     <div class="text-center grid grid-auto-flow: row" id="searchSection" class="card">
                         <!-- <h3 class="text-center">Search by Movie</h3> -->
@@ -31,7 +36,7 @@
                         <button type="submit" class="btn max-w-1/3 mx-12" id="searchBtn"> Stop the Doom Scroll! </button>
                     </form>
                     </div>
-        
+                    
                     <div id="searchBySection" class="card text-left grid grid-auto-flow: row py-4 px-2">
                         <!-- <h3>Search By...</h3> -->
 
@@ -66,9 +71,9 @@
                    
                 </section>
                 
-            </main>
+            </div>
 
-            <!-- Moved out of main section so that it can be displayed in the correct position -->
+            <!-- Kept out of wrapperDiv section so that it can be displayed in the correct position -->
             <section id="resultsSection" class="w-full md:w-1/2 md:w-full lg:w-2/3 bg-blue-100 ml-0 flex flex-wrap grid grid-auto-flow items-center">
                 <div class="py-8 my-2 mr-4 text-2xl font-bold item-center"> <!-- Added div for heading container -->
                     <h2 class="text-center">Showing suggested movies for: <span id="repo-search-term">PLACEHOLDER</span></h2>
@@ -80,7 +85,7 @@
                 <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
                 <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
             </section>
-        </div>
+        </main>
     <script src="./Assets/JS/script.js"></script>
     </body>
   
