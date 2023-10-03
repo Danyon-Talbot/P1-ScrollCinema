@@ -1,15 +1,19 @@
-// Select the button and the section to hide
-const hideMenuButton = document.getElementById('hideMenu');
-const wrapperDiv = document.getElementById('wrapperDiv');
+document.getElementById('hideMenu').addEventListener('click', function() {
+    const wrapperDiv = document.getElementById('wrapperDiv');
+    const resultsSection = document.getElementById('resultsSection');
 
-// Add an event listener to the button
-hideMenuButton.addEventListener('click', function() {
-    // Check if the section is already hidden
-    if (wrapperDiv.style.transform === 'translateX(-100%)') {
-        // If it's hidden, show it
-        wrapperDiv.style.transform = 'translateX(0)';
+    // Check if the wrapperDiv is currently visible
+    if (wrapperDiv.style.display !== 'none') {
+        // If visible, hide the wrapperDiv and expand the resultsSection
+        wrapperDiv.style.display = 'none';
+        resultsSection.style.width = '100%';
     } else {
-        // If it's visible, hide it
-        wrapperDiv.style.transform = 'translateX(-100%)';
+        // If not visible, show the wrapperDiv and revert the resultsSection width
+        wrapperDiv.style.display = 'flex';
+        resultsSection.style.width = 'calc(100% - 33.33333%)'; // Adjust '--width-of-wrapperDiv' to the original width of the wrapperDiv
     }
 });
+
+
+
+
