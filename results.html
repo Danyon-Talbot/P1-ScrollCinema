@@ -6,7 +6,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="./Assets/CSS/reset.css">
         <link rel="stylesheet" href="./Assets/CSS/style.css"/>
-        <title>ScrollCinema</title>
+        <title>Welcome to ScrollCinema!</title>
     </head>
 
     <!-- Creates 2 columns and sets the flex direction to column. mx-4 adds 16px margin left & right. -->
@@ -15,12 +15,6 @@
         <!-- Aligns text to center and forces each element into it's own row -->
         <header class="flex justify-stretch" id="hero">
             <img id="logo" src="./Images/logo horizontal.jpg" aria-placeholder="Logo" class="w-full md:w-1/3 sm:w-full">
-
-            <div id="titleDiv" class="flex grid grid-auto-flow: row col-span-full justify-center w-full hidden md:block sm:block">
-                <h1 id="app-title" class="text-center"> Welcome to ScrollCinema! </h1>
-                <p>Search for a movie title to see a list of similar films and their ratings!
-                </p>
-            </div>
         </header>
 
 
@@ -29,6 +23,12 @@
 
             <!-- This div separates all the search and confirmation code from the resultsSection -->
             <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-100 static transform translate-x-0 transition-transform duration-300">
+
+            <!-- Description-->
+            <div id="titleDiv" class="flex grid grid-auto-flow: row col-span-full justify-center w-full hidden md:block sm:block">
+                <h1 id="app-title" class="text-center"> Welcome to ScrollCinema! </h1>
+                <p class="text-center">Search for a movie title to see a list of similar films and their ratings!</p>
+            </div>
 
                 <!-- Aligns all elements within to the center and forces them on individual rows -->
                 <section class="w-full flex justify-center align-center grid grid-auto-flow: row" id="searchContainer">
@@ -65,11 +65,11 @@
                      <section id="confirmationContainer" class="text-left grid grid-auto-flow: row py-4 px-16">
                         <div>
                             <!-- Placeholder -->
-                            CONFIRMATION PLACEHOLDER
+                            <img id="sourcedPoster" src ="" alt="Poster for Search result">
                         </div>
                         <div>
                             <!-- Placeholder -->
-                            RATINGS PLACEHOLDER
+                          <div id="searchedRating">Rating</div>
                         </div>
                      </section>
                    
@@ -88,7 +88,11 @@
                 </div>
                 <!-- These are PLACEHOLDERS for styling purposes -->
                 <!-- These will be removed and replaced by dynamically updating HTML via JS -->
-                <div id="repos-container" class="border-2 border-black py-12 m-4">PLACEHOLDER</div>
+                <div id="resultsContainer" class="border-2 border-black py-12 m-4 flex-wrap">
+                    <div id="movieTitle" class="float-left">Suggested Movie Title</div>
+                    <img id="suggestedMoviePoster" src ="" alt="Poster for Suggestions" class="float-centre">
+                    <div id="suggestionRating" class="float-right"> Suggestion Rating</div>
+                </div>
             </section>
         </main>
     <script src="./Assets/JS/script.js"></script>
