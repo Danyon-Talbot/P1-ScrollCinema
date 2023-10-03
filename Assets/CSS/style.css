@@ -11,16 +11,19 @@ main {
 }
 
 #hero {
-    max-width: 500px;
-    padding: 10px;
+    
+}
+
+header {
+    background-color: var(--white);
 }
 
 #logo {
-    border-radius: 25%;
+    padding: 10px;
 }
 
 #searchContainer {
-    max-width: 500px;
+    /* max-width: 500px; */
     padding: 10px;
 }
 
@@ -48,4 +51,10 @@ main {
     background-color: rgb(201, 201, 201);
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
+}
+
+#hideMenu {
+    background-color: rgb(201, 201, 201);
+    border-radius: 10px;
+    padding: 5px;
 }
