@@ -26,12 +26,9 @@
 
         <!-- Makes main content wrap -->
         <main class="flex flex-wrap">
-            
+
             <!-- This div separates all the search and confirmation code from the resultsSection -->
             <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-100 static transform translate-x-0 transition-transform duration-300">
-
-                <!-- Implement Eventlistener in JS to this button that hides the menu-->
-                <button id="hideMenu" class="absolute top-3 right-3">Hide</button>
 
                 <!-- Aligns all elements within to the center and forces them on individual rows -->
                 <section class="w-full flex justify-center align-center grid grid-auto-flow: row" id="searchContainer">
@@ -82,6 +79,10 @@
 
             <!-- Kept out of wrapperDiv section so that it can be displayed in the correct position -->
             <section id="resultsSection" class="w-full md:w-1/2 md:w-full lg:w-2/3 bg-blue-200 ml-0 flex flex-wrap grid grid-auto-flow items-center">
+               
+            <!-- Implement Eventlistener in JS to this button that hides the menu-->
+            <button id="hideMenu" class="absolute left"><</button> 
+               
                 <div class="py-8 my-2 mr-4 text-2xl font-bold item-center"> <!-- Added div for heading container -->
                     <h2 class="text-center">Showing suggested movies for: <span id="repo-search-term">PLACEHOLDER</span></h2>
                 </div>
