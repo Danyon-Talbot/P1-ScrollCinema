@@ -29,9 +29,9 @@ header {
 
 
 #search-form {
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    background-color: rgb(201, 201, 201);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: rgb(145, 192, 147);
     border-style: solid;
     border-color: var(--black);
 }
@@ -40,17 +40,17 @@ header {
     margin-top: 5px;
     background-color: rgb(92, 92, 92);
     padding: 5px;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 #searchBySection {
-    background-color: rgb(201, 201, 201);
+    background-color: rgb(164, 201, 202);
 }
 
 #confirmationContainer {
-    background-color: rgb(201, 201, 201);
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    background-color: rgb(189, 107, 107);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 /* CSS relating to Hide menu */
@@ -61,6 +61,41 @@ header {
     margin-left: 5px;
 }
 
+#searchContainer {
+    background-color: rgb(201, 201, 201);
+    border-radius: 20px;
+
+}
+
+#resultsSection {
+    border-radius: 20px;
+}
+
 .full-width {
     width: 100% !important;
+}
+
+
+/* ensures that the page is properly displayed on smaller screens */
+@media screen and (max-width: 1024px) {
+    #wrapperDiv {
+        width: 100%;
+    }
+
+    #resultsSection {
+        width: 100%;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+    #app-title {
+        font-size: 36px;
+        line-height: 40px;
+    }
+    #searchContainer {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    #hideMenu {
+        transform: rotate(90deg);
+    }
 }
