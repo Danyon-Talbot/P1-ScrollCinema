@@ -26,6 +26,7 @@ if (getComputedStyle(wrapperDiv).display !== "none") {
 
 
 
+
     // // Check if the wrapperDiv is currently visible
     // if (wrapperDiv.style.display !== 'none') {
     //     // If visible, hide the wrapperDiv and expand the resultsSection
