@@ -23,7 +23,32 @@ if (getComputedStyle(wrapperDiv).display !== "none") {
 
 }
 });
+// Listen for a click event on the search button
+document.getElementById('searchBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevents the form from submitting and also refreshing the page
 
+    // Gets the movie title entered
+    const movieTitle = document.getElementById('movieTitle').value;
+
+    // Makes fetch request to OMDB API
+    fetch(`http://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=8a6dca2d`)
+        .then(response => response.json())
+        .then(data => {
+            // Update the poster with fetched data
+            document.getElementById('sourcedPoster').src = data.Poster;
+
+            // Updates the ratings and description
+            document.getElementById('ratings').innerHTML = `
+                <h4>Movie Ratings:</h4>
+                <p>Rotten Tomatoes: ${data.Ratings.find(rating => rating.Source === 'Rotten Tomatoes').Value}</p>
+                <p>OMDB: ${data.Ratings.find(rating => rating.Source === 'Internet Movie Database').Value}</p>
+            `;
+            document.getElementById('description').innerHTML = `
+                <p>${data.Plot}</p>
+            `;
+        })
+        .catch(error => console.error('Error:', error)); // Handles errors made during fetch.
+});
 
 
     // // Check if the wrapperDiv is currently visible
