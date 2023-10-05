@@ -29,7 +29,10 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
 
     // Hide the landing-page section
     document.getElementById('landing-page').style.display = 'none';
-    
+
+    // Show the scrollableContainer
+    document.getElementById('scrollableContainer').style.display = 'block';
+
     // Gets the movie title entered
     const movieTitle = document.getElementById('movieTitle').value;
 
