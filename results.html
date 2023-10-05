@@ -13,14 +13,12 @@
  
 
     <!-- Creates 2 columns and sets the flex direction to column. mx-4 adds 16px margin left & right. -->
-    <body id="body" class="flex flex-col mx-4">
+    <body id="body" class="flex flex-col">
 
         <!-- Moved out of main to create a banner across the top of the page -->
         <header class="flex justify-stretch grid grid-auto-flow" id="hero">
-            <img id="logo" src="./Images/logo horizontal.jpg" aria-placeholder="Logo" class="w-[616px] h-[160px]">
-            <div id="titleDiv" class="flex grid grid-auto-flow: row col-span-full justify-center w-full  md:block sm:block h-auto">
-                <h1 id="app-title" class="text-center text-6xl bg-blue-300"> Welcome to ScrollCinema! </h1>
-            </div>
+            <img id="logo" src="./Assets/Images/logo horizontal.jpg" aria-placeholder="Logo" class="w-[616px] h-[160px]">
+            <div id="titleDiv" class="flex grid grid-auto-flow: row col-span-full justify-center w-full  md:block sm:block h-auto"></div>
         </header>
 
         <!-- Makes main content wrap -->
@@ -64,7 +62,7 @@
                      <section id="confirmationContainer" class="">
                         <div id="searchPosterContainer" class="flex justify-center pt-2">
                             <!-- Poster -->
-                            <img id="sourcedPoster" src ="./Images/Logo.png" alt="Poster for Search result" class="max-w-[300px] max-h-[500px] ">
+                            <img id="sourcedPoster" src ="./Assets/Images/Logo.png" alt="Poster for Search result" class="max-w-[300px] max-h-[500px] ">
                         </div>
                         <div id="searchedInfo" class="text-left grid grid-auto-flow: row py-4 px-16">
                             <div id="ratings" class="">
@@ -88,8 +86,11 @@
                 <!-- Implement Eventlistener in JS to this button that hides the menu-->
                 <button id="hideMenu" class="absolute left-1 top-2 border-2 border-black"><</button> 
                 
-                    <div class="py-8 my-2 mx-4 item-center"> <!-- Added div for heading container -->
-                        <h2 class="text-center text-3xl font-bold"> Our Goals <span id="repo-search-term">PLACEHOLDER</span></h2>
+                    <div id="landing-page" class="mx-4 item-center"> <!-- Added div for heading container -->
+                        <h1 id="app-title" class="text-center text-6xl"> Welcome to ScrollCinema! </h1>
+                        <div id="landing-image-container">
+                            <img src="./Assets/Images/1600x1200-film-roll-8625505-6842852.gif" alt="a movie film roll scrolling throuh">
+                        </div>
                         <p class="text-center text-2xl">Here at ScrollCinema we aim to assist people in making up their minds on what movies they want to watch based upon a movie they already enjoy.</p>
                     </div>
                     <!-- These are PLACEHOLDERS for styling purposes -->

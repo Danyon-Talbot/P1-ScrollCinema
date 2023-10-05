@@ -75,6 +75,19 @@ header {
     width: 100% !important;
 }
 
+#landing-image-container {
+    width: 400px;  /* Desired width of the cropped area */
+    height: 400px; /* Desired height of the cropped area */
+    overflow: hidden; /* Hide the parts of the image outside the container */
+    margin: auto;
+}
+
+#landing-image-container img {
+    width: 100%;  /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: cover; /* Resize the image to cover the container without distorting its aspect ratio */
+    object-position: center center; /* Position the center of the image in the center of the container. Adjust as needed. */
+}
 
 /* ensures that the page is properly displayed on smaller screens */
 @media screen and (max-width: 1024px) {
