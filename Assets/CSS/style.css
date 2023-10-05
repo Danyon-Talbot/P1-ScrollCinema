@@ -91,6 +91,7 @@ header {
 }
 
 #scrollableContainer {
+    display: none;
     height: 90%;          /* Set the height of the container */
     border: 1px solid var(--lightblue); /* Optional: Add a border for visual clarity */
     border-radius: 20px;
