@@ -75,6 +75,7 @@ header {
     width: 100% !important;
 }
 
+/* CSS relating to landing page */
 #landing-image-container {
     width: 400px;
     height: 400px;
@@ -90,7 +91,7 @@ header {
 }
 
 #scrollableContainer {
-    height: 200px;          /* Set the height of the container */
+    height: 90%;          /* Set the height of the container */
     border: 1px solid var(--lightblue); /* Optional: Add a border for visual clarity */
     border-radius: 20px;
     overflow-y: auto;       /* Add vertical scrolling */

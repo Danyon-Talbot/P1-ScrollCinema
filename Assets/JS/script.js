@@ -27,6 +27,9 @@ if (getComputedStyle(wrapperDiv).display !== "none") {
 document.getElementById('searchBtn').addEventListener('click', function(event) {
     event.preventDefault(); // Prevents the form from submitting and also refreshing the page
 
+    // Hide the landing-page section
+    document.getElementById('landing-page').style.display = 'none';
+    
     // Gets the movie title entered
     const movieTitle = document.getElementById('movieTitle').value;
 
