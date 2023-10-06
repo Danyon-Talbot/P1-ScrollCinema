@@ -56,6 +56,38 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
         .catch(error => console.error('Error:', error)); // Handles errors made during fetch.
 });
 
+document.getElementById('searchBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const movieTitle = document.getElementById('movieTitle').value;
+
+    // First Fetch to Search for the movie and get its ID
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=9f1e8d32975dba0b02e052bf00f515de&query=${encodeURIComponent(movieTitle)}`)
+        .then(response => response.json())
+        .then(data => {
+            const movieId = data.results[0].id; // Get the ID of the first search result
+            
+            // Second Fetch to Get 5 similar movies based on the ID
+            fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=9f1e8d32975dba0b02e052bf00f515de`)
+                .then(response => response.json())
+                .then(data => {
+                    const recommendedMovies = data.results.slice(0, 5);
+
+                    recommendedMovies.forEach((movie, index) => {
+                        const movieContainer = document.getElementById(`recommendedMovie${index + 1}`);
+                        movieContainer.querySelector('.movieTitle').textContent = movie.title;
+                        movieContainer.querySelector('.recommendedPoster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                        movieContainer.querySelector('.tmdbRating').textContent = `${movie.vote_average}/10`;
+                        movieContainer.querySelector('.releaseYear').textContent = movie.release_date.split('-')[0];
+                        movieContainer.querySelector('.movieDescription').textContent = movie.overview;
+                        movieContainer.classList.remove('hidden');
+                    });
+                })
+                .catch(error => console.error('TMDB Error:', error));
+        })
+        .catch(error => console.error('TMDB Error:', error));
+});
+
 
     // // Check if the wrapperDiv is currently visible
     // if (wrapperDiv.style.display !== 'none') {
