@@ -25,25 +25,28 @@
         <main class="flex flex-col flex-wrap md:flex-row bg-blue-300">
 
             <!-- This div separates all the search and confirmation code from the resultsSection -->
-            <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-300 static max-h-screen">
+            <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center items-start grid-auto-flow bg-blue-300 static min-h-screen">
              
                 <!-- Aligns all elements within to the center and forces them on individual rows -->
                 <section class="w-full flex  mx-2" id="searchContainer">
-                    <section class="text-center grid grid-auto-flow: row h-auto w-full h-full" id="searchSection">
-                        <h3 class="text-center text-xl font-bold self-center">Search for a movie title to see a list of similar films and their ratings!</h3>
-
+                    <section class="text-center grid grid-auto-flow: row h-auto w-full min-h-full" id="searchSection">
                             <!-- Reintegrated formContainer for menu restructure -->
-                            <div id="formContainer" class="grid content-center ">
-                            <form id="search-form" class="flex flex-col text-center px-2 w-full h-[150px]">
+                            <section id="formContainer" class="grid content-center ">
+
+                                <div id="instrutctions" class="self-start">
+                                    <h3 class="text-center text-xl font-bold">Search for a movie title to see a list of similar films and their ratings!</h3>
+                                </div>
+
+                            <form id="search-form" class="flex flex-col text-center px-2 w-full h-[120px]">
                                 <label class="form-label text-3xl" for="movieTitle">Search By Movie Title: </label>
-                                <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input pl-2 text-2xl" />
+                                <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input pl-2 px-1 text-2xl" />
                                 <button type="submit" class="btn max-w-1/3 mx-12 text-xl" id="searchBtn"> Stop the Doom Scroll! </button>
                             </form>
                             
                         
                             <!-- Removed sort by Genre -->
                             <!-- Nested ratingContainer under formContainer for ease of styling -->
-                                <div id="searchBySection" class="card text-left grid grid-auto-flow: row pl-4 mx-4">
+                                <div id="searchBySection" class="card text-left grid grid-auto-flow: row pl-4 py-1 mx-4 mb-4">
                                     <div id="ratingContainer" class="card-body flex items-center">     
                                         <label for="movieRating">Rating: </label>
                                         <select id="movieRating" name="movieRating" class="ml-1">
@@ -54,9 +57,9 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </section>
 
-                        <section id="confirmationContainer" class="h-full">
+                        <section id="confirmationContainer" class="h-full hidden">
                             <div id="searchPosterContainer" class="flex justify-center pt-2">
                                 <!-- Poster -->
                                 <img id="sourcedPoster" src ="" alt="Poster for Search result" class="max-w-[300px] max-h-[500px] ">

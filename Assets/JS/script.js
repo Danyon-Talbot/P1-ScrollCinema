@@ -30,6 +30,14 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
     // Hide the landing-page section
     document.getElementById('landing-page').style.display = 'none';
 
+    // Displays Confirmation Container
+    document.getElementById("confirmationContainer").classList.remove("hidden")
+
+    // Restyles the border of the form container to be flush with the confirmation container
+    const formStyle = document.getElementById("formContainer")
+    formStyle.style.borderBottomRightRadius = 0;
+    formStyle.style.borderBottomLeftRadius = 0;
+
     // Show the scrollableContainer
     document.getElementById('scrollableContainer').style.display = 'block';
 
@@ -87,9 +95,6 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
         })
         .catch(error => console.error('TMDB Error:', error));
 });
-
-
-    // // Check if the wrapperDiv is currently visible
     // if (wrapperDiv.style.display !== 'none') {
     //     // If visible, hide the wrapperDiv and expand the resultsSection
     //      wrapperDiv.style.display = 'none';

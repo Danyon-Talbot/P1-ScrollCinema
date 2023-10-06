@@ -29,8 +29,7 @@ header {
 
 
 #formContainer {
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    border-radius: 20px;
     background-color: rgb(145, 192, 147);
     border-style: solid;
     border-color: var(--black);
@@ -99,7 +98,7 @@ header {
 
 #scrollableContainer {
     display: none;
-    height: 90%;          /* Set the height of the container */
+    height: 60%;          /* Set the height of the container */
     border: 1px solid var(--lightblue); /* Optional: Add a border for visual clarity */
     border-radius: 20px;
     overflow-y: auto;       /* Add vertical scrolling */
