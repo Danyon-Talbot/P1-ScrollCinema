@@ -28,7 +28,7 @@ header {
 }
 
 
-#search-form {
+#formContainer {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     background-color: rgb(145, 192, 147);
@@ -44,9 +44,11 @@ header {
 }
 
 #searchBySection {
-    background-color: rgb(164, 201, 202);
+    background-color: var(--salmon);
+    border-radius: 20px;
 }
 
+/* Styles the default borders and background colour for the confirmation container */
 #confirmationContainer {
     background-color: rgb(189, 107, 107);
     border-bottom-right-radius: 20px;
@@ -68,6 +70,11 @@ header {
 }
 
 #resultsSection {
+    border-radius: 20px;
+}
+
+#searchedInfo {
+    background-color: var(--salmon);
     border-radius: 20px;
 }
 
@@ -119,6 +126,6 @@ header {
         border-bottom-right-radius: 0px;
     }
     #hideMenu {
-        transform: rotate(90deg);
+
     }
 }
