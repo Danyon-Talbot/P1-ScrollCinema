@@ -1,6 +1,7 @@
 document.getElementById('hideMenu').addEventListener('click', function() {
     const wrapperDiv = document.getElementById('wrapperDiv');
     const resultsSection = document.getElementById('resultsSection');
+    const hideMenuButton = document.getElementById('hideMenu');
 
 //   Checks if the wrapperDiv is visible  
 if (getComputedStyle(wrapperDiv).display !== "none") {
@@ -15,15 +16,16 @@ if (getComputedStyle(wrapperDiv).display !== "none") {
         // If the page is not 1024px or smaller, removes both limitations
         resultsSection.classList.remove("w-full", "lg:w-2/3");
     }
+    hideMenuButton.textContent = "Show Menu";
 } else {
     // Resets pages layout classes
     wrapperDiv.classList.remove("hidden");
     resultsSection.classList.remove("w-full");
     resultsSection.classList.add("lg:w-2/3");
-
+    hideMenuButton.textContent = "Hide Menu";
 }
 });
-// Listen for a click event on the search button
+
 document.getElementById('searchBtn').addEventListener('click', function(event) {
     event.preventDefault(); // Prevents the form from submitting and also refreshing the page
 
@@ -42,7 +44,9 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
     formStyle.style.borderBottomLeftRadius = 0;
 
     // Show the scrollableContainer
-    document.getElementById('scrollableContainer').style.display = 'block';
+    document.getElementById("scrollableContainer").style.display="flex";
+
+    document.getElementById("moreSuggestions").style.display="flex";
 
     // Gets the movie title entered
     const movieTitle = document.getElementById('movieTitle').value;
@@ -64,37 +68,97 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
                 <p>${data.Plot}</p>
             `;
         })
-        .catch(error => console.error('Error:', error)); // Handles errors made during fetch.
-});
+        .catch(error => console.error('Error:', error));
 
-document.getElementById('searchBtn').addEventListener('click', function(event) {
-    event.preventDefault();
+        const recommendedMoviesContainer = document.getElementById('recommendedMovies');
 
-    const movieTitle = document.getElementById('movieTitle').value;
-
-    // First Fetch to Search for the movie and get its ID
+    // Fetch to Search for the movie and get its ID
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=9f1e8d32975dba0b02e052bf00f515de&query=${encodeURIComponent(movieTitle)}`)
-        .then(response => response.json())
-        .then(data => {
-            const movieId = data.results[0].id; // Get the ID of the first search result
-            
-            // Second Fetch to Get 5 movie recommendations based on the ID
-            fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=9f1e8d32975dba0b02e052bf00f515de`)
-                .then(response => response.json())
-                .then(data => {
-                    const recommendedMovies = data.results.slice(0, 5);
+    .then(response => response.json())
+    .then(data => {
+        const movieId = data.results[0].id;
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=9f1e8d32975dba0b02e052bf00f515de`);
+    })
+    .then(response => response.json())
+    .then(data => {
+            const recommendedMovies = data.results.slice(0, 5);
 
-                    recommendedMovies.forEach((movie, index) => {
-                        const movieContainer = document.getElementById(`recommendedMovie${index + 1}`);
-                        movieContainer.querySelector('.movieTitle').textContent = movie.title;
-                        movieContainer.querySelector('.recommendedPoster').src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-                        movieContainer.querySelector('.tmdbRating').textContent = `${movie.vote_average}/10`;
-                        movieContainer.querySelector('.releaseYear').textContent = movie.release_date.split('-')[0];
-                        movieContainer.querySelector('.movieDescription').textContent = movie.overview;
-                        movieContainer.classList.remove('hidden');
-                    });
-                })
-                .catch(error => console.error('TMDB Error:', error));
+            recommendedMovies.forEach(movie => {
+                // Creates the Movie Container element
+                const movieContainer = document.createElement('div');
+                //Styles the Movie Container element
+                movieContainer.classList.add('recommendedMovie', 'flex', 'flex-col', 'grid', 'grid-flow-col', 'justify-start', 'border-2', 'border-black', 'max-h-[400px]', 'm-4');
+
+                // Creates the Poster Container element
+                const posterContainer = document.createElement('div');
+                // Styles the Poster Container element
+                posterContainer.classList.add('recommendedPosterContainer', 'max-w-[200px]', 'max-h-[300px]', 'min-w-[200px]', 'min-h-[300px]');
+
+                // Creates the Poster img element within Poster Container
+                const poster = document.createElement('img');
+                poster.classList.add('recommendedPoster');
+                poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+                // Creates the Movie info element 
+                const movieInfo = document.createElement('div');
+                // Positions the Movie info element
+                movieInfo.classList.add('recommendedInfo', 'text-left', 'grid', 'grid-auto-flow-row', 'py-4', 'px-8');
+
+                // Creates a header element for the title
+                const title = document.createElement('h3');
+                title.classList.add('movieTitle');
+                // fills it with the called API information
+                title.textContent = movie.title;
+
+                // Creates the recommended movie ratings element
+                const movieRatings = document.createElement('div');
+                movieRatings.classList.add('recommendedRatings');
+
+                // Adds the title for the recommended movie ratings element
+                const ratingsTitle = document.createElement('h4');
+                ratingsTitle.textContent = 'Movie Ratings:';
+
+                // Adds the TMDB rating pulled from the API
+                const tmdbRating = document.createElement('p');
+                tmdbRating.innerHTML = `TMDB: <span class="tmdbRating">${movie.vote_average}/10</span>`;
+
+                // Adds a container to store the year
+                const releaseYearContainer = document.createElement('div');
+                releaseYearContainer.classList.add('recommendedYear');
+
+                // Adds the movie release date Year
+                const releaseYear = document.createElement('p');
+                releaseYear.innerHTML = `Release Year: <span class="releaseYear">${movie.release_date.split('-')[0]}</span>`;
+
+                // Adds the Movie Description container
+                const movieDescriptionContainer = document.createElement('div');
+                movieDescriptionContainer.classList.add('recommendedDescription');
+
+                // Adds Movie Description container with the movie overview pulled from the API
+                const movieDescription = document.createElement('p');
+                movieDescription.innerHTML = `Description Of Movie: <span class="movieDescription">${movie.overview}</span>`;
+
+                // Appends each component under the necessary parent
+                posterContainer.appendChild(poster);
+
+                movieRatings.appendChild(ratingsTitle);
+                movieRatings.appendChild(tmdbRating);
+
+                releaseYearContainer.appendChild(releaseYear);
+
+                movieDescriptionContainer.appendChild(movieDescription);
+
+                movieInfo.appendChild(title);
+                movieInfo.appendChild(movieRatings);
+                movieInfo.appendChild(releaseYearContainer);
+                movieInfo.appendChild(movieDescriptionContainer);
+
+                movieContainer.appendChild(posterContainer);
+                movieContainer.appendChild(movieInfo);
+
+                recommendedMoviesContainer.appendChild(movieContainer);
+            });
         })
         .catch(error => console.error('TMDB Error:', error));
 });
+
