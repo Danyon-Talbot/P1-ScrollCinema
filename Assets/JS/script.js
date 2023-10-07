@@ -29,6 +29,9 @@ if (getComputedStyle(wrapperDiv).display !== "none") {
 document.getElementById('searchBtn').addEventListener('click', function(event) {
     event.preventDefault(); // Prevents the form from submitting and also refreshing the page
 
+    // Clears the generated HTML whenever clicked. Functions to refresh the suggestions on a new search.
+    document.getElementById('recommendedMovies').innerHTML = '';
+
     // Hide the landing-page section
     document.getElementById('landing-page').style.display = 'none';
 
