@@ -161,19 +161,24 @@ function fetchRecommendations(event) {
     })
     .then(response => response.json())
     .then(data => {
+        // Filter out movies that were previously recommended and get the top 5 recommendations.
         const newRecommendations = data.results.filter(movie => !previouslyRecommended.includes(movie.id)).slice(0, 5);
+
+        // Add the new movie recommendations to the list of previously recommended movies.
         newRecommendations.forEach(movie => {
             previouslyRecommended.push(movie.id);
         });
+        // Calls the display movie function to create and append Movie information
         displayMovies(newRecommendations);
     })
     .catch(error => console.error('TMDB Error:', error));
 }
 
-
+// This function fetches more movie recommendations based on the movie title entered by the user.
 function fetchMoreRecommendations() {
     const movieTitle = document.getElementById('movieTitle').value;
 
+    // Fetchs movie recommendations from The Movie Database (TMDB) based on the entered movie title.
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=9f1e8d32975dba0b02e052bf00f515de&query=${encodeURIComponent(movieTitle)}`)
     .then(response => response.json())
     .then(data => {
@@ -182,16 +187,21 @@ function fetchMoreRecommendations() {
     })
     .then(response => response.json())
     .then(data => {
+        // Filters out movies that were previously recommended and get the top 5 recommendations.
         const newRecommendations = data.results.filter(movie => !previouslyRecommended.includes(movie.id)).slice(0, 5);
 
+        // THIS IS A WIP, I HAVE NOT GOTTEN IT TO PROPERLY WORK
         if (newRecommendations.length === 0) {
             showModal(); // This will display the modal when there are no new movies to suggest
             return;
         }
 
+        // Add the new movie recommendations to the list of previously recommended movies.       
         newRecommendations.forEach(movie => {
             previouslyRecommended.push(movie.id);
         });
+
+        // Calls the displayMovie function to generate the new movie suggestions
         displayMovies(newRecommendations);
     })
     .catch(error => console.error('TMDB Error:', error));
