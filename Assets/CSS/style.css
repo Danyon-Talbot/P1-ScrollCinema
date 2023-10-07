@@ -122,6 +122,18 @@ header {
     background-color: var(--salmon);
 }
 
+#hideMenu:hover {
+    transition: all 0.1s ease-in-out;
+    background-color: rgb(252, 159, 149);
+    box-shadow: salmon 0 0 10px;
+}
+
+#searchBtn:hover {
+    font-size: 20px;
+    transition: all 0.1s ease-in-out;
+    background-color: #5f9abb;
+    box-shadow: #033F63 0 0 10px;
+}
 
 
 /* ensures that the page is properly displayed on smaller screens */
