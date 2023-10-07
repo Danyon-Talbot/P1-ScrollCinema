@@ -12,7 +12,7 @@
 
  
 
-    <!-- Creates 2 columns and sets the flex direction to column. mx-4 adds 16px margin left & right. -->
+
     <body id="body" class="flex flex-col">
 
         <!-- Moved out of main to create a banner across the top of the page -->
@@ -24,13 +24,13 @@
         <!-- Makes main content wrap -->
         <main class="flex flex-col flex-wrap md:flex-row bg-blue-300">
 
-            <!-- This div separates all the search and confirmation code from the resultsSection -->
+            <!-- Separates all the search and confirmation code from the resultsSection -->
             <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center items-start grid-auto-flow bg-blue-300 static">
              
                 <!-- Aligns all elements within to the center and forces them on individual rows -->
                 <section class="w-full flex  mx-2" id="searchContainer">
                     <section class="text-center grid grid-auto-flow: row h-auto w-full min-h-full" id="searchSection">
-                            <!-- Reintegrated formContainer for menu restructure -->
+
                             <section id="formContainer" class="grid content-center bg-blue-100">
 
                                 <div id="instrutctions" class="self-start p-2">
@@ -44,8 +44,8 @@
                             </form>
                             
                         
-                            <!-- Removed sort by Genre -->
-                            <!-- Nested ratingContainer under formContainer for ease of styling -->
+
+
                                 <div id="searchBySection" class="card text-left grid grid-auto-flow: row pl-4 py-1 m-2">
                                     <div id="ratingContainer" class="card-body flex items-center">     
                                         <label for="movieRating">Rating: </label>
@@ -80,11 +80,11 @@
             </div>
 
             <!-- Kept out of wrapperDiv section so that it can be displayed in the correct position -->
-            <section id="resultsSection" class="relative w-full md:w-full lg:w-2/3 bg-blue-200 p-4 grid grid-auto-flow flex content-start md:w-full"> <!-- Remove min-h-screen -->
+            <section id="resultsSection" class="relative w-full md:w-full lg:w-2/3 bg-blue-200 p-4 grid grid-auto-flow flex content-start md:w-full">
                
                 <button id="hideMenu" class="absolute left-1 top-2 border-2 border-black">Hide Menu</button> 
                 
-                    <div id="landing-page" class="flex self-center items-center grid grid-auto-flow: row pt-30 pb-48 mx-4 "> <!-- Added div for heading container -->
+                    <div id="landing-page" class="flex self-center items-center grid grid-auto-flow: row pt-30 pb-48 mx-4 ">
                         <h1 id="app-title" class="text-center text-6xl px-6"> Welcome to ScrollCinema! </h1>
                         <div id="landing-image-container" class="h-[10%]">
                             <img src="./Assets/Images/1600x1200-film-roll-8625505-6842852.gif" alt="a movie film roll scrolling through">
@@ -108,8 +108,8 @@
                         </div>
 
                         <button id="moreSuggestions" class="hidden self-center border-2 border-black p-2 text-lg">Generate More Suggestions</button>
-                    
-                    </section>
+                        
+                    </section>   
             </section>
         </main>
     <script src="./Assets/JS/script.js"></script>
