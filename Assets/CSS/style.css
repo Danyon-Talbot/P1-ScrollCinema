@@ -42,7 +42,7 @@ header {
 /* styles the search button */
 #searchBtn {
     margin-top: 5px;
-    background-color: rgb(92, 92, 92);
+    background-color: #5f9abb;
     padding: 5px;
     border-radius: 20px;
 }
@@ -131,8 +131,8 @@ header {
 #searchBtn:hover {
     font-size: 20px;
     transition: all 0.1s ease-in-out;
-    background-color: #5f9abb;
-    box-shadow: #033F63 0 0 10px;
+    background-color: lightblue;
+    box-shadow: #5f9abb 0 0 10px;
 }
 
 
