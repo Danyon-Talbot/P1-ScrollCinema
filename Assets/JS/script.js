@@ -48,7 +48,7 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
     const movieTitle = document.getElementById('movieTitle').value;
 
     // Makes fetch request to OMDB API
-    fetch(`http://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=8a6dca2d`)
+    fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=8a6dca2d`)
         .then(response => response.json())
         .then(data => {
             // Update the poster with fetched data
