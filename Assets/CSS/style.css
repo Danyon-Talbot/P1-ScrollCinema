@@ -54,18 +54,19 @@ header {
     border-bottom-left-radius: 20px;
 }
 
+#searchContainer {
+    background-color: var(--darkblue);
+    border-radius: 20px;
+}
+
 /* CSS relating to Hide menu */
 #hideMenu {
-    background-color: rgb(201, 201, 201);
+    background-color: var(--salmon);
     border-radius: 10px;
     padding: 5px;
     margin-left: 5px;
-}
-
-#searchContainer {
-    background-color: rgb(201, 201, 201);
-    border-radius: 20px;
-
+    width: 95px;
+    height: 40px;
 }
 
 #resultsSection {
@@ -106,6 +107,16 @@ header {
 }
 
 /* ensures that the page is properly displayed on smaller screens */
+
+@media screen and (max-width: 1375px) {
+    #hideMenu {
+       width: 60px;
+       height: 60px;
+    }
+}
+    
+
+
 @media screen and (max-width: 1024px) {
     #wrapperDiv {
         width: 100%;
@@ -125,6 +136,6 @@ header {
         border-bottom-right-radius: 0px;
     }
     #hideMenu {
-
+        
     }
 }

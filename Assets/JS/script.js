@@ -31,7 +31,10 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
     document.getElementById('landing-page').style.display = 'none';
 
     // Displays Confirmation Container
-    document.getElementById("confirmationContainer").classList.remove("hidden")
+    document.getElementById("confirmationContainer").classList.remove("hidden");
+
+    // Displays generated suggestions Title
+    document.getElementById("generatedMovieTitle").classList.remove("hidden");
 
     // Restyles the border of the form container to be flush with the confirmation container
     const formStyle = document.getElementById("formContainer")
@@ -75,8 +78,8 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
         .then(data => {
             const movieId = data.results[0].id; // Get the ID of the first search result
             
-            // Second Fetch to Get 5 similar movies based on the ID
-            fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=9f1e8d32975dba0b02e052bf00f515de`)
+            // Second Fetch to Get 5 movie recommendations based on the ID
+            fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=9f1e8d32975dba0b02e052bf00f515de`)
                 .then(response => response.json())
                 .then(data => {
                     const recommendedMovies = data.results.slice(0, 5);
@@ -95,6 +98,7 @@ document.getElementById('searchBtn').addEventListener('click', function(event) {
         })
         .catch(error => console.error('TMDB Error:', error));
 });
+
     // if (wrapperDiv.style.display !== 'none') {
     //     // If visible, hide the wrapperDiv and expand the resultsSection
     //      wrapperDiv.style.display = 'none';
