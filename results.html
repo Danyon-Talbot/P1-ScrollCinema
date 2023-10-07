@@ -25,7 +25,7 @@
         <main class="flex flex-col flex-wrap md:flex-row bg-blue-300">
 
             <!-- This div separates all the search and confirmation code from the resultsSection -->
-            <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center items-start grid-auto-flow bg-blue-300 static min-h-screen">
+            <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center items-start grid-auto-flow bg-blue-300 static min-h-screen"> <!-- Remove min-h-screen later -->
              
                 <!-- Aligns all elements within to the center and forces them on individual rows -->
                 <section class="w-full flex  mx-2" id="searchContainer">
@@ -33,23 +33,23 @@
                             <!-- Reintegrated formContainer for menu restructure -->
                             <section id="formContainer" class="grid content-center ">
 
-                                <div id="instrutctions" class="self-start">
-                                    <h3 class="text-center text-xl font-bold">Search for a movie title to see a list of similar films and their ratings!</h3>
+                                <div id="instrutctions" class="self-start p-2">
+                                    <h3 class="text-center text-xl font-bold">Search for a movie to see a list of similar films and their ratings!</h3>
                                 </div>
 
                             <form id="search-form" class="flex flex-col text-center px-2 w-full h-[120px]">
                                 <label class="form-label text-3xl" for="movieTitle">Search By Movie Title: </label>
-                                <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input pl-2 px-1 text-2xl" />
-                                <button type="submit" class="btn max-w-1/3 mx-12 text-xl" id="searchBtn"> Stop the Doom Scroll! </button>
+                                <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input pl-3 m-1 text-2xl rounded-[20px]" />
+                                <button type="submit" class="btn max-w-1/3 min-w-1/3 mx-12 my-1 text-xl" id="searchBtn"> Stop the Doom Scroll! </button>
                             </form>
                             
                         
                             <!-- Removed sort by Genre -->
                             <!-- Nested ratingContainer under formContainer for ease of styling -->
-                                <div id="searchBySection" class="card text-left grid grid-auto-flow: row pl-4 py-1 mx-4 mb-4">
+                                <div id="searchBySection" class="card text-left grid grid-auto-flow: row pl-4 py-1 m-2">
                                     <div id="ratingContainer" class="card-body flex items-center">     
                                         <label for="movieRating">Rating: </label>
-                                        <select id="movieRating" name="movieRating" class="ml-1">
+                                        <select id="movieRating" name="movieRating" class="ml-1 p-1 rounded-[10px]">
                                             <option value="" disabled selected>Select a Rating</option>
                                             <option value="topRated">Must-Watch Masterpieces</option>
                                             <option value="notBad">Midweek Movies</option>
@@ -80,52 +80,62 @@
             </div>
 
             <!-- Kept out of wrapperDiv section so that it can be displayed in the correct position -->
-            <section id="resultsSection" class="relative w-full md:w-full lg:w-2/3 bg-blue-200 p-4 min-h-screen flex grid grid-auto-flow items-center md:w-full">
+            <section id="resultsSection" class="relative w-full md:w-full lg:w-2/3 bg-blue-200 p-4 min-h-screen grid grid-auto-flow flex content-start md:w-full">
                
-                <!-- Implement Eventlistener in JS to this button that hides the menu-->
                 <button id="hideMenu" class="absolute left-1 top-2 border-2 border-black">Hide Menu</button> 
                 
-                    <div id="landing-page" class="mx-4 item-center"> <!-- Added div for heading container -->
-                        <h1 id="app-title" class="text-center text-6xl"> Welcome to ScrollCinema! </h1>
-                        <div id="landing-image-container">
-                            <img src="./Assets/Images/1600x1200-film-roll-8625505-6842852.gif" alt="a movie film roll scrolling throuh">
+                    <div id="landing-page" class="flex self-center items-center grid grid-auto-flow: row min-h-screen pt-30 pb-48 mx-4 "> <!-- Added div for heading container -->
+                        <h1 id="app-title" class="text-center text-6xl px-4"> Welcome to ScrollCinema! </h1>
+                        <div id="landing-image-container" class="h-[10%]">
+                            <img src="./Assets/Images/1600x1200-film-roll-8625505-6842852.gif" alt="a movie film roll scrolling through">
                         </div>
                         <p class="text-center text-2xl">Here at ScrollCinema we aim to assist people in making up their minds on what movies they want to watch based upon a movie they already enjoy.</p>
                     </div>
-                    <!-- These are PLACEHOLDERS for styling purposes -->
-                    <!-- These will be removed and replaced by dynamically updating HTML via JS -->
-                    <div id="scrollableContainer">
-                    <div id="resultsContainer" class="border-2 border-black py-12 m-4 flex-wrap">
+
+                    <div id="generatedMovieTitle" class="hidden flex justify-center text-5xl text-center">
+                        <h2>Here is you Generated Movie Suggestions!</h2>
+                    </div>
+
+                    <!-- SCROLL CONTAINER -->
+                    <section id="scrollableContainer" class="border-2 border-black py-12 m-4 flex-wrap grid content-start">
+
+                    <!-- <div id="resultsContainer"> -->
                         <div id="recommendedMovies" class="float-left">
-                            <h2>Recommended Movies</h2>
-                    
+                           
                             <!-- Movie Recommendation 1 -->
-                            <div class="recommendedMovie hidden" id="recommendedMovie1">
-                                <h3 class="movieTitle"></h3>
-                                <div class="recommendedPosterContainer">
-                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie" class="max-w-[300px] max-h-[500px]">
+                            <div class="recommendedMovie hidden flex flex-col grid grid-flow-col justify-start border-2 border-black max-h-[400px] m-4" id="recommendedMovie1">
+                                
+                                <div class="recommendedPosterContainer max-w-[200px] max-h-[300px] min-w-[200px] min-h-[300px]">
+                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie">
                                 </div>
+
                                 <div class="recommendedInfo text-left grid grid-auto-flow: row py-4 px-16">
+                                    <h3 class="movieTitle"></h3>
                                     <div class="recommendedRatings">
                                         <h4>Movie Ratings:</h4>
                                         <p>TMDB: <span class="tmdbRating"></span></p>
                                     </div>
+
                                     <div class="recommendedYear">
                                         <p>Release Year: <span class="releaseYear"></span></p>
                                     </div>
+
                                     <div class="recommendedDescription">
                                         <p>Description Of Movie: <span class="movieDescription"></span></p>
                                     </div>
+
                                 </div>
                             </div>
                     
                             <!-- Movie Recommendation 2 -->
-                            <div class="recommendedMovie hidden" id="recommendedMovie2">
-                                <h3 class="movieTitle"></h3>
-                                <div class="recommendedPosterContainer">
-                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie" class="max-w-[300px] max-h-[500px]">
+                            <div class="recommendedMovie hidden flex flex-col grid grid-flow-col justify-start border-2 border-black max-h-[400px] m-4" id="recommendedMovie2">
+
+                                <div class="recommendedPosterContainer max-w-[200px] max-h-[300px]">
+                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie">
                                 </div>
+                               
                                 <div class="recommendedInfo text-left grid grid-auto-flow: row py-4 px-16">
+                                    <h3 class="movieTitle"></h3>
                                     <div class="recommendedRatings">
                                         <h4>Movie Ratings:</h4>
                                         <p>TMDB: <span class="tmdbRating"></span></p>
@@ -140,12 +150,14 @@
                             </div>
                     
                             <!-- Movie Recommendation 3 -->
-                            <div class="recommendedMovie hidden" id="recommendedMovie3">
-                                <h3 class="movieTitle"></h3>
-                                <div class="recommendedPosterContainer">
-                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie" class="max-w-[300px] max-h-[500px]">
+                            <div class="recommendedMovie hidden flex flex-col grid grid-flow-col justify-start border-2 border-black max-h-[400px] m-4" id="recommendedMovie3">
+
+                                <div class="recommendedPosterContainer max-w-[200px] max-h-[300px]">
+                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie">
                                 </div>
+                               
                                 <div class="recommendedInfo text-left grid grid-auto-flow: row py-4 px-16">
+                                    <h3 class="movieTitle"></h3>
                                     <div class="recommendedRatings">
                                         <h4>Movie Ratings:</h4>
                                         <p>TMDB: <span class="tmdbRating"></span></p>
@@ -160,12 +172,14 @@
                             </div>
                     
                             <!-- Movie Recommendation 4 -->
-                            <div class="recommendedMovie hidden" id="recommendedMovie4">
-                                <h3 class="movieTitle"></h3>
-                                <div class="recommendedPosterContainer">
-                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie" class="max-w-[300px] max-h-[500px]">
+                            <div class="recommendedMovie hidden flex flex-col grid grid-flow-col justify-start border-2 border-black max-h-[400px] m-4" id="recommendedMovie4">
+
+                                <div class="recommendedPosterContainer max-w-[200px] max-h-[300px]">
+                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie">
                                 </div>
+                               
                                 <div class="recommendedInfo text-left grid grid-auto-flow: row py-4 px-16">
+                                    <h3 class="movieTitle"></h3>
                                     <div class="recommendedRatings">
                                         <h4>Movie Ratings:</h4>
                                         <p>TMDB: <span class="tmdbRating"></span></p>
@@ -180,12 +194,14 @@
                             </div>
                     
                             <!-- Movie Recommendation 5 -->
-                            <div class="recommendedMovie hidden" id="recommendedMovie5">
-                                <h3 class="movieTitle"></h3>
-                                <div class="recommendedPosterContainer">
-                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie" class="max-w-[300px] max-h-[500px]">
+                            <div class="recommendedMovie hidden flex flex-col grid grid-flow-col justify-start border-2 border-black max-h-[400px] m-4" id="recommendedMovie5">
+
+                                <div class="recommendedPosterContainer max-w-[200px] max-h-[300px]">
+                                    <img class="recommendedPoster" src="./Images/Logo.png" alt="Poster for Recommended Movie">
                                 </div>
+                              
                                 <div class="recommendedInfo text-left grid grid-auto-flow: row py-4 px-16">
+                                    <h3 class="movieTitle"></h3>
                                     <div class="recommendedRatings">
                                         <h4>Movie Ratings:</h4>
                                         <p>TMDB: <span class="tmdbRating"></span></p>
@@ -200,8 +216,8 @@
                             </div>
                     
                         </div>
-                    </div>
-                    </div>
+                    <!-- </div> -->
+                    </section>
             </section>
         </main>
     <script src="./Assets/JS/script.js"></script>
