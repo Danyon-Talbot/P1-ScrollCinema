@@ -3,46 +3,96 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./Assets/CSS/style.css"/>
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Scroll Cinema</title>
+        <link rel="stylesheet" href="./Assets/CSS/reset.css">
+        <link rel="stylesheet" href="./Assets/CSS/style.css"/>
+        <title>ScrollCinema</title>
     </head>
 
-    <main>
-        <body>
-            <header>
-                <img id="Logo" src="./Images/Logo.png" aria-placeholder="Logo">
-                <h1>Scroll Cinema</h1>
-            </header>
+    <!-- Creates 2 columns and sets the flex direction to column. mx-4 adds 16px margin left & right. -->
+    <body class="columns-2 flex flex-col mx-4">
 
-            <section>
-                <!-- Add CSS Styling  -->
-                <div id="introContainer">
-                    <h2>Filler</h2>
-                    <p>Filler</p>
+        <!-- Aligns text to center and forces each element into it's own row -->
+        <header class="flex justify-stretch" id="hero">
+            <img id="logo" src="./Images/logo horizontal.jpg" aria-placeholder="Logo" class="w-full md:w-1/3 sm:w-full">
+
+        </header>
+
+
+        <!-- Makes main content wrap -->
+        <main class="flex flex-wrap">
+
+            <!-- This div separates all the search and confirmation code from the resultsSection -->
+            <div id="wrapperDiv" class="w-full md:w-2/3 md:w-full lg:w-1/3 min-w-1/3 flex flex-wrap justify-center grid-auto-flow bg-blue-100 static transform translate-x-0 transition-transform duration-300">
+                <div id="titleDiv" class="flex grid grid-auto-flow: row col-span-full justify-center w-full hidden md:block sm:block">
+                    <h1 id="app-title" class="text-center"> Welcome to ScrollCinema! </h1>
+                    <p class="text-center">Search for a movie title to see a list of similar films and their ratings!</p>
                 </div>
-                <div id="searchContainer">
-                    <!-- Add JavaScript Functionality -->
-                    <input id="searchInput" value="Search"></input>
-                    <!-- Rating filter -->
-                    <div id="searchBySection" class="card">
-                        <h3>Search By...</h3>
-                        <div id="language-buttons" class="card-body">
-                          <label for="compareByGenre">Compare by Genre:</label>
-                          <input type="checkbox" id="compareByGenre" name="compareByGenre">
-                          <label for="movieRating">Select a Rating:</label>
-                          <select id="movieRating" name="movieRating">
-                              <option value="" disabled selected>Select a Rating</option>
-                              <option value="topRated">Must-Watch Masterpieces</option>
-                              <option value="notBad">Midweek Movies</option>
-                              <option value="bad">Meagerly Rated Trash</option>
-                          </select>
+                <!-- Aligns all elements within to the center and forces them on individual rows -->
+                <section class="w-full flex justify-center align-center grid grid-auto-flow: row" id="searchContainer">
+                    <div class="text-center grid grid-auto-flow: row" id="searchSection" class="card">
+                        <!-- <h3 class="text-center">Search by Movie</h3> -->
+                    <form id="search-form" class="flex flex-col text-center px-2 max-w-full">
+                        <label class="form-label" for="movieTitle">Search By Movie Title: </label>
+                        <input name="movieTitle" id="movieTitle" type="text" autofocus="true" class="form-input" />
+                        <button type="submit" class="btn max-w-1/3 mx-12" id="searchBtn"> Stop the Doom Scroll! </button>
+                    </form>
+                    </div>
+                    
+                    <div id="searchBySection" class="card text-left grid grid-auto-flow: row py-4 px-2">
+                        <!-- <h3>Search By...</h3> -->
+
+                        <!-- Split comparebyGenre and movieRating into individual elements for a more refined page layout -->
+                        <!-- Gave them unique id's for CSS purposes -->
+                        <div id="genreContainer" class="card-body">
+                            <label for="compareByGenre" id="genreLabel">Compare by Genre: </label>
+                            <input type="checkbox" id="compareByGenre" name="compareByGenre" class="w-4 h-4">
                         </div>
-                      </div>
-                    <!-- This button should replace the index.html with results.html -->
-                    <button id="searchButton">Search Button</button>
+                        <!-- New ratingContainer div -->
+                        <div id="ratingContainer" class="card-body">     
+                            <label for="movieRating">Select a Rating:</label>
+                            <select id="movieRating" name="movieRating">
+                                <option value="" disabled selected>Select a Rating</option>
+                                <option value="topRated">Must-Watch Masterpieces</option>
+                                <option value="notBad">Midweek Movies</option>
+                                <option value="bad">Meagerly Rated Trash</option>
+                            </select>
+                        </div>
+                    </div>
+                     <!-- Need to add the search confirmation HTML here -->
+                     <section id="confirmationContainer" class="text-left grid grid-auto-flow: row py-4 px-16">
+                        <div>
+                            <!-- Poster -->
+                            <img id="sourcedPoster" src ="" alt="Poster for Search result">
+                        </div>
+                        <div>
+                            <!-- Ratings -->
+                            <div id="searchedRating">Rating</div>
+                        </div>
+                     </section>
+                   
+                </section>
+        
+            </div>
+
+            <!-- Kept out of wrapperDiv section so that it can be displayed in the correct position -->
+            <section id="resultsSection" class="w-full md:w-1/2 md:w-full lg:w-2/3 bg-blue-200 ml-0 flex flex-wrap grid grid-auto-flow items-center">
+               
+            <!-- Implement Eventlistener in JS to this button that hides the menu-->
+            <button id="hideMenu" class="absolute left"><</button> 
+               
+                <div class="py-8 my-2 mr-4 text-2xl font-bold item-center"> <!-- Added div for heading container -->
+                    <h2 class="text-center">Showing suggested movies for: <span id="repo-search-term">PLACEHOLDER</span></h2>
                 </div>
+                <!-- These are PLACEHOLDERS for styling purposes -->
+                <!-- These will be removed and replaced by dynamically updating HTML via JS -->
+                <div id="resultsContainer" class="border-2 border-black py-12 m-4 flex-wrap">
+                    <div id="movieTitle" class="float-left">Suggested Movie Title</div>
+                    <img id="suggestedMoviePoster" src ="" alt="Poster for Suggestions" class="float-centre">
+                    <div id="suggestionRating" class="float-right"> Suggestion Rating</div>
             </section>
-        </body>
-    </main>
-</html>
+        </main>
+    <script src="./Assets/JS/script.js"></script>
+    </body>
+  
+  </html>
