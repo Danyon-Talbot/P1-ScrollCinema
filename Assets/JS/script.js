@@ -108,11 +108,43 @@ function displayMovies(recommendations) {
     });
 }
 
+// Function to save search history to local storage
+function saveToHistory(movieTitle) {
+    let history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    if (!history.includes(movieTitle)) {
+        history.push(movieTitle);
+        localStorage.setItem('searchHistory', JSON.stringify(history));
+    }
+}
+
+// Function to display search history in the modal
+function showHistory() {
+    const historyList = document.getElementById('historyList');
+    const history = JSON.parse(localStorage.getItem('searchHistory')) || [];
+    historyList.innerHTML = '';
+    history.forEach(movie => {
+        const listItem = document.createElement('li');
+        listItem.textContent = movie;
+        historyList.appendChild(listItem);
+    });
+    document.getElementById('historyModal').classList.remove('hidden');
+}
+
+// Event listener for the search history button
+document.getElementById('showHistory').addEventListener('click', showHistory);
+
+// Event listener to close the search history modal
+document.getElementById('closeHistory').addEventListener('click', function() {
+    document.getElementById('historyModal').classList.add('hidden');
+});
 
 function fetchRecommendations(event) {
     event.preventDefault(); // Prevents the form from submitting and also refreshing the page
 
     const movieTitle = document.getElementById('movieTitle').value; // <<< This was missing
+
+    // Save the movie title to search history
+    saveToHistory(movieTitle);
 
     // Clears the generated HTML whenever clicked. Functions to refresh the suggestions on a new search.
     document.getElementById('recommendedMovies').innerHTML = '';

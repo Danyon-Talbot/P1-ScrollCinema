@@ -19,6 +19,8 @@
         <header class="flex justify-stretch grid grid-auto-flow" id="hero">
             <img id="logo" src="./Assets/Images/logo horizontal.jpg" aria-placeholder="Logo" class="w-[616px] h-[160px]">
             <div id="titleDiv" class="flex grid grid-auto-flow: row col-span-full justify-center w-full  md:block sm:block h-auto"></div>
+            <!-- Search History Button -->
+            <button id="showHistory" class="absolute top-3 right-3 border-2 border-black p-2">Search History</button>
         </header>
 
         <!-- Makes main content wrap -->
@@ -111,6 +113,17 @@
                     </section>   
             </section>
         </main>
+    
+        <!-- Search History Modal -->
+        <div id="historyModal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-4 rounded-lg w-1/2">
+            <h2 class="text-center mb-4">Search History</h2>
+            <ul id="historyList"></ul>
+            <button id="closeModal" class="mt-4 block mx-auto border-2 border-black p-2">Close</button>
+            </div>
+        </div>
+
+
     <script src="./Assets/JS/script.js"></script>
     </body>
   
