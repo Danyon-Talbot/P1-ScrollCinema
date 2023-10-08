@@ -43,6 +43,7 @@ header {
 /* this fixes colour leaking from parent container */
 #searchSection {
     background-color: var(--white);
+    border-radius: 20px;
 }
 
 /* styles the form container */
