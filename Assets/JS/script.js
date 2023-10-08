@@ -54,7 +54,7 @@ function displayMovies(recommendations) {
 
         // Creates a header element for the title
         const title = document.createElement('h3');
-        title.classList.add('movieTitle');
+        title.classList.add('movieTitle', 'text-xl');
         // fills it with the called API information
         title.textContent = movie.title;
 
@@ -153,7 +153,7 @@ function fetchRecommendations(event) {
     document.getElementById('landing-page').style.display = 'none';
 
     // Displays Confirmation Container
-    document.getElementById("confirmationContainer").classList.remove("hidden");
+    document.getElementById("confirmationContainer").style.display = "block";
 
     // Displays generated suggestions Title
     document.getElementById("generatedMovieTitle").classList.remove("hidden");
