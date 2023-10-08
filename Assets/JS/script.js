@@ -134,7 +134,7 @@ function showHistory() {
 document.getElementById('showHistory').addEventListener('click', showHistory);
 
 // Event listener to close the search history modal
-document.getElementById('closeHistory').addEventListener('click', function() {
+document.getElementById('closeModal').addEventListener('click', function() {
     document.getElementById('historyModal').classList.add('hidden');
 });
 
