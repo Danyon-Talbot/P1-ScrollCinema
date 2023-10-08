@@ -40,6 +40,11 @@ header {
     background-color: var(--white);
 }
 
+/* this fixes colour leaking from parent container */
+#searchSection {
+    background-color: var(--white);
+}
+
 /* styles the form container */
 #formContainer {
     padding-top: 10px;
@@ -58,15 +63,15 @@ header {
 /* styles the search button */
 #searchBtn {
     margin-top: 5px;
-    background-color: var(--darkblue);
-    color: var(--white);
+    background-color: var(--salmon);
+    color: var(--black);
     padding: 5px;
     border-radius: 20px;
 }
 
 /* styles the select rating button */
 #searchBySection {
-    background-color: var(--salmon);
+    background-color: var(--white);
     border-radius: 20px;
 }
 
@@ -150,8 +155,8 @@ header {
 #searchBtn:hover {
     font-size: 20px;
     transition: all 0.1s ease-in-out;
-    background-color: lightblue;
-    box-shadow: #5f9abb 0 0 10px;
+    background-color: rgb(252, 159, 149);
+    box-shadow: salmon 0 0 10px;
 }
 
 /* Modal CSS */
@@ -224,12 +229,14 @@ header {
 @media screen and (max-width: 1024px) {
     #wrapperDiv {
         width: 100%;
+        max-height: none;
     }
     #confirmationContainer{
         display: none;
     }
     #resultsSection {
         width: 100%;
+        max-height: none;
         border-top-right-radius: 0px;
         border-top-left-radius: 0px;
     }
@@ -252,6 +259,7 @@ header {
     }
     #wrapperDiv {
         max-width: 100%;
+        max-height: none;
     }
     #searchContainer {
         padding: 4px;
