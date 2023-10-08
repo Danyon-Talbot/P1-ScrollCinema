@@ -239,3 +239,19 @@ function fetchMoreRecommendations() {
     .catch(error => console.error('TMDB Error:', error));
 }
 
+let noMovies = document.getElementById("noMoviesModal");
+let closeButton = document.querySelector("#close-button");
+
+closeButton.addEventListener("click", function() {
+    noMovies.style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+    if (event.target === noMovies) {
+        noMovies.style.display = "none";
+    }
+});
+
+function showModal() {
+    noMovies.style.display = "flex";
+}
