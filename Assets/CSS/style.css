@@ -31,7 +31,7 @@ header {
 }
 
 #wrapperDiv{
-    min-height: 100vh;
+    max-height: 100vh;
 }
 
 #searchContainer {
@@ -75,6 +75,7 @@ header {
     background-color: var(--white);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    display: none;
 }
 
 /* styles the background of the search container */
@@ -128,7 +129,7 @@ header {
 #scrollableContainer {
     display: none;
     max-height: 100%;          /* Set the height of the container */
-    border: 1px solid var(--lightblue); /* Optional: Add a border for visual clarity */
+    border: 1px solid var(--darkblue); /* Optional: Add a border for visual clarity */
     border-radius: 20px;
     overflow-y: auto;       /* Add vertical scrolling */
     padding: 10px;
@@ -224,7 +225,9 @@ header {
     #wrapperDiv {
         width: 100%;
     }
-
+    #confirmationContainer{
+        display: none;
+    }
     #resultsSection {
         width: 100%;
         border-top-right-radius: 0px;
@@ -240,5 +243,48 @@ header {
     }
     #generatedMovieTitle {
         font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        max-width: 100%;
+    }
+    #wrapperDiv {
+        max-width: 100%;
+    }
+    #searchContainer {
+        padding: 4px;
+    }
+    #resultsSection {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 2px;
+        max-height: none;
+    }
+    #landing-page {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    #landing-image-container.img {
+        max-width: 100%;
+    }
+    #hideMenu {
+        position: absolute;
+        top: 60px;
+        left: 4px;
+        font-size: 12px;
+        height: 40px;
+        width: 60px;
+        padding: 2px;
+    }
+    .recommendedMovie {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }   
+    .recommendedDescription {
+        display: none;
     }
 }
